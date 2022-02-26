@@ -25,7 +25,7 @@ int main()
             break;
 
         case 3:
-        case -1:
+        case 0:
             cout<<"End of program... ";
             break;
         default:
