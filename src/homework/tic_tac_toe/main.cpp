@@ -9,7 +9,7 @@ int main()
     int position;
 
     do {
-        cout << "Enter first player (X or O)";
+        cout << "Enter first player (X or O) ";
         cin >> first_player;
         game.start_game(first_player);
 

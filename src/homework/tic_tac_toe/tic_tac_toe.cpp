@@ -19,7 +19,7 @@ void TicTacToe::display_board()const {
 }
 
 void TicTacToe::set_next_player() {
-    if (player == "X") {
+    if (player == "X" || player == "x") {
         player = "O";
     } else {
         player = "X";
@@ -27,11 +27,10 @@ void TicTacToe::set_next_player() {
 }
 
 bool TicTacToe::check_board_full() {
-    for (auto peg: pegs) {
-        if (peg == " " ) {
+    for (const auto &peg: pegs)
+        if (peg == " ") {
             return false;
-        }
-    }
+        };
     return true;
 }
 void TicTacToe::clear_board() {
