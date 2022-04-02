@@ -44,8 +44,7 @@ REQUIRE(game.get_player() == "O");
 }
 
 
-// I'm getting an expression result unused warning because not all
-// spaces are filled within my test boards, I"M ASSUMING...
+
 
 TEST_CASE("Test win by first column") {
 TicTacToe game;
