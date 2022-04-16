@@ -6,15 +6,15 @@ using std::cout;
 
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager){  // friends method
     out << "*- All Games Played -*\n";
-    for (const auto& game: manager.games) {
-        out << game << "\n";
+    for (auto& game: manager.games) {
+        out << *game << "\n";
     }
     return out;
 }
 
-void TicTacToeManager::save_game(TicTacToe b){ // Public
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+void TicTacToeManager::save_game(unique_ptr<TicTacToe> &b) {
+    update_winner_count(b->get_winner());
+    games.push_back(move(b));
 
 }
 
