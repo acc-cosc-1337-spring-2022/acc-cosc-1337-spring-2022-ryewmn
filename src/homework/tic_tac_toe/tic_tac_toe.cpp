@@ -30,7 +30,7 @@ std::istream &operator>>(std::istream &in, TicTacToe &game) {
         in >> position;
     }
 
-    if (position >= 1 && position <= 9) {
+    if (position >= 1 && position <= 16) {
         game.mark_board(position);
 
 
