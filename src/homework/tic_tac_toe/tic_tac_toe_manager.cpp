@@ -1,6 +1,8 @@
 //cpp
 
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
+
 using std::cout;
 
 
@@ -10,6 +12,20 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager){  /
         out << *game << "\n";
     }
     return out;
+}
+// Constructor
+TicTacToeManager::TicTacToeManager(TicTacToeData& d): data{d} {
+    games = d.get_games();
+
+    for (auto& game: games) {
+        update_winner_count(game->get_winner());
+    }
+}
+
+// Destructor
+TicTacToeManager::~TicTacToeManager() {
+    cout << "\n Games Saved\n";
+    data.save_games(games);
 }
 
 void TicTacToeManager::save_game(unique_ptr<TicTacToe> &b) {
