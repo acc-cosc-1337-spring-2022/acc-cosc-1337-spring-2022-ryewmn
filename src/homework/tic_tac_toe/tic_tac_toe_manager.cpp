@@ -15,7 +15,7 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager){  /
 }
 // Constructor
 TicTacToeManager::TicTacToeManager(TicTacToeData& d): data{d} {
-    games = d.get_games();
+    games = TicTacToeData::get_games();
 
     for (auto& game: games) {
         update_winner_count(game->get_winner());
@@ -25,7 +25,7 @@ TicTacToeManager::TicTacToeManager(TicTacToeData& d): data{d} {
 // Destructor
 TicTacToeManager::~TicTacToeManager() {
     cout << "\n Games Saved\n";
-    data.save_games(games);
+    TicTacToeData::save_games(games);
 }
 
 void TicTacToeManager::save_game(unique_ptr<TicTacToe> &b) {

@@ -13,8 +13,6 @@ int main()
     TicTacToeData data;
     // Create TicTacToeManager instance
     TicTacToeManager manager = TicTacToeManager(data);
-
-
     // declaration of variables
     string first_player;
     char choice;

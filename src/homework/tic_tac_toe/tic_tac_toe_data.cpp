@@ -2,46 +2,37 @@
 
 void TicTacToeData::save_games(const std::vector<std::unique_ptr<TicTacToe>>& games)
 {
-    std::ofstream outfile;
-    outfile.open(FILE_NAME);
-
-    if (outfile.is_open())
+    std::ofstream out_file;
+    out_file.open("tic_tac_toe.txt"); // opens file
+    for(auto& game: games)
     {
-        for (auto& game : games)
+        for(auto& c : game->get_pegs())
         {
-            for (auto& peg : game->get_pegs())
-            {
-                outfile << peg;
-            }
-
-            outfile << game->get_winner();
-            outfile << "\n";
+            out_file<<c;
         }
+
+        out_file<<game->get_winner()<<"\n";
     }
 
-    outfile.close();
+    out_file.close();
 }
 
 std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
 {
     std::vector<std::unique_ptr<TicTacToe>> boards;
     std::ifstream inpfile;
-    inpfile.open(FILE_NAME);
-
+    inpfile.open("tic_tac_toe.txt");
     std::string line;
-
     if (inpfile.is_open())
     {
         while (std::getline(inpfile, line))
         {
             std::vector<std::string> pegs;
-
             for (auto i = 0; i < (line.size() - 1); ++i)
             {
                 std::string ch(1, line[i]);
                 pegs.push_back(ch);
             }
-
             std::string winner_char{line[line.size() - 1]};
             std::unique_ptr<TicTacToe> board;
 
@@ -53,12 +44,9 @@ std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
             {
                 board = std::make_unique<TicTacToe4>(pegs, winner_char);
             }
-
             boards.push_back(std::move(board));
         }
-
         inpfile.close();
     }
-
     return boards;
 }

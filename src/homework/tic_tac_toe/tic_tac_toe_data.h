@@ -11,8 +11,8 @@
 class TicTacToeData
 {
 public:
-    void save_games(const std::vector<std::unique_ptr<TicTacToe>>& games);
-    std::vector<std::unique_ptr<TicTacToe>> get_games();
+    static void save_games(const std::vector<std::unique_ptr<TicTacToe>>& games);
+    static std::vector<std::unique_ptr<TicTacToe>> get_games();
 private:
     const std::string FILE_NAME = "tic_tac_toe.dat";
 };
